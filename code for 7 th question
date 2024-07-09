@@ -1,0 +1,10 @@
+def maximum_score(cardpoints,k):
+    n=len(cardpoints)
+    totalsum=sum(cardpoints)
+
+    window_sum=sum(cardpoints[:n-k])
+    min_window_sum=window_sum
+    for i in range(n-k,n):
+        window_sum=window_sum+cardpoints[i]-cardpoints[i-(n-k)]
+        min_window_sum=min(min_window_sum,window_sum)
+    return totalsum-min_window_sum
